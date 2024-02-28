@@ -7,6 +7,8 @@ interface REPLInputProps{
   // CHANGED
   history: string[],
   setHistory: Dispatch<SetStateAction<string[]>>,
+  mode: boolean, // if true, brief, if false, verbose
+  setMode: Dispatch<SetStateAction<boolean>>,
 }
 // You can use a custom interface or explicit fields or both! An alternative to the current function header might be:
 // REPLInput(history: string[], setHistory: Dispatch<SetStateAction<string[]>>)
@@ -16,6 +18,9 @@ export function REPLInput(props : REPLInputProps) {
     const [commandString, setCommandString] = useState<string>('');
     // TODO WITH TA : add a count state
     const [count, setCount] = useState<number>(0)
+
+    // Variable output to change given the command
+  
     
     // This function is triggered when the button is clicked.
     function handleSubmit(commandString:string) {
@@ -23,6 +28,19 @@ export function REPLInput(props : REPLInputProps) {
       // CHANGED
       props.setHistory([...props.history, commandString])
       setCommandString('')
+
+      if (commandString == "mode"){
+        if (props.mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
+          props.setMode(false)
+          var returnLine = "Mode set to Verbose"
+        } else {
+          var returnLine = "Mode set to Brief"
+        }
+      }
+
+
+
+
     }
     /**
      * We suggest breaking down this component into smaller components, think about the individual pieces 
