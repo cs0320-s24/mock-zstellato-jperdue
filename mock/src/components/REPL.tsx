@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/main.css';
 import { REPLHistory } from './REPLHistory';
 import { REPLInput } from './REPLInput';
+import { REPLHeader } from './REPLHeader';
 
 /* 
   You'll want to expand this component (and others) for the sprints! Remember 
@@ -32,6 +33,10 @@ export default function REPL() {
         setHistory={setHistory} 
         mode={mode} 
         setMode={setMode}/>
+      <REPLHeader
+        mode={mode}
+        loadStatement='No CSV Loaded' // will replace with a variablle from const
+        />
     </div>
   );
 }
