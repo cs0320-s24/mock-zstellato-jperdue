@@ -1,6 +1,6 @@
 import '../styles/main.css';
-import { BriefHistory } from '../Histories/BriefHistory';
-import { VerboseHistory } from '../Histories/VerboseHistory';
+import { BriefHistory } from './BriefHistory';
+import { VerboseHistory } from './VerboseHistory';
 
 interface REPLHistoryProps{
     // TODO: Fill with some shared state tracking all the pushed commands

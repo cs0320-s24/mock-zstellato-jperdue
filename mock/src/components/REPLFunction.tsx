@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import '../styles/main.css';
-import { filepath_data_map } from '../../data/mockedData';
+import { filepath_data_map } from '../data/mockedData';
 
 
 /**

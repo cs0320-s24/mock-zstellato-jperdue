@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import '../styles/main.css';
-import { ControlledInput } from '../ControlledInput';
+import { ControlledInput } from './ControlledInput';
 
 interface REPLInputProps{
   // TODO: Fill this with desired props... Maybe something to keep track of the submitted commands
