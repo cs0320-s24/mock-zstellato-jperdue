@@ -7,8 +7,8 @@ interface REPLInputProps{
   // CHANGED
   history: [string, string [][]][],
   setHistory: Dispatch<SetStateAction<[string, string [][]][]>>,
-  mode: boolean, // if true, brief, if false, verbose
-  setMode: Dispatch<SetStateAction<boolean>>,
+  isBrief: boolean, // if brief then true, if false then verbose
+  setIsBrief: Dispatch<SetStateAction<boolean>>,
 }
 // You can use a custom interface or explicit fields or both! An alternative to the current function header might be:
 // REPLInput(history: string[], setHistory: Dispatch<SetStateAction<string[]>>)
@@ -29,19 +29,19 @@ export function REPLInput(props : REPLInputProps) {
       // props.setHistory([...props.history, commandString])
       // setCommandString('')
 
-      if (commandString == "mode"){
-        if (props.mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
-          props.setMode(false)
+      // This controls the mode
+      if (commandString == "toggle mode"){
+        if (props.isBrief){ // if isBrief is true, the mode is brief, this means we will switch to verbose mode
+          props.setIsBrief(false)
           var returnLine = "Mode set to Verbose"
         } else {
-          props.setMode(true)
+          props.setIsBrief(true)
           var returnLine = "Mode set to Brief"
         }
+
+        // TODO: apparently  we need to 
         props.setHistory([[commandString, [[returnLine]]], ...props.history])
       }
-
-
-
 
 
     }
