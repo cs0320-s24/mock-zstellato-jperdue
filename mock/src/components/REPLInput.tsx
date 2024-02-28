@@ -5,8 +5,8 @@ import { ControlledInput } from './ControlledInput';
 interface REPLInputProps{
   // TODO: Fill this with desired props... Maybe something to keep track of the submitted commands
   // CHANGED
-  history: string[],
-  setHistory: Dispatch<SetStateAction<string[]>>,
+  history: [string, string [][]][],
+  setHistory: Dispatch<SetStateAction<[string, string [][]][]>>,
   mode: boolean, // if true, brief, if false, verbose
   setMode: Dispatch<SetStateAction<boolean>>,
 }
@@ -26,17 +26,20 @@ export function REPLInput(props : REPLInputProps) {
     function handleSubmit(commandString:string) {
       setCount(count+1)
       // CHANGED
-      props.setHistory([...props.history, commandString])
-      setCommandString('')
+      // props.setHistory([...props.history, commandString])
+      // setCommandString('')
 
       if (commandString == "mode"){
         if (props.mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
           props.setMode(false)
           var returnLine = "Mode set to Verbose"
         } else {
+          props.setMode(true)
           var returnLine = "Mode set to Brief"
         }
+        props.setHistory([[commandString, [[returnLine]]], ...props.history])
       }
+
 
 
 
