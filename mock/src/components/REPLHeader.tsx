@@ -17,26 +17,23 @@ interface REPLHeader{
  */
 export function REPLHeader(props: REPLHeader){
     if (props.mode){
-        var modeString = "Brief Mode"
+        var modeString = "Brief"
     } else {
-        var modeString = "Verbose Mode"
+        var modeString = "Verbose"
     }
     return (
         <div className="Header">
-            <table className="Header-Table">
+            <table className="Table">
                 <tr>
                     <td>
                         <p className="REPL-header">
                             <b>Mode</b> {modeString}
                         </p>
-                    </td>
-                    <td>
-                    <p className="REPL-header">
-                            <b>Load</b> {props.loadStatement}
+                        <p className="REPL-header">
+                            {props.loadStatement}
                         </p>
                     </td>
                 </tr>
-
             </table>
         </div>
     )

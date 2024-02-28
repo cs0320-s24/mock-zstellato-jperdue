@@ -1,0 +1,13 @@
+/* Header Styling */
+
+
+.Header {
+    text-align: center;
+    height: 10vh;
+}
+
+.Table {
+    table-layout: fixed;
+    width: auto;
+    background-color: #282c34;
+}
