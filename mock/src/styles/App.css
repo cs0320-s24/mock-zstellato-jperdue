@@ -12,3 +12,19 @@
   font-size: calc(1px + 2vmin);
   color: white;
 }
+
+
+
+/* Header Styling */
+.Header {
+    text-align: left;
+    margin: 1vh;
+    background-color: #0055ff;
+}
+
+.Table {
+    margin: auto;
+    table-layout: fixed;
+    width: auto;
+    background-color: #0055ff;
+}

@@ -1,14 +1,15 @@
-/* Header Styling */
+
 
 
 .Header {
     text-align: center;
     height: 10vh;
+    background-color: #0055ff;
 }
 
 .Table {
     margin: auto;
     table-layout: fixed;
     width: auto;
-    background-color: #282c34;
+    background-color: #0055ff;
 }
