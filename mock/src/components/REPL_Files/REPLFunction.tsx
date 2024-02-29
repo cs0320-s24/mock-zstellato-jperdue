@@ -88,4 +88,15 @@ function handleView(
     }
   }
 
+function handleSearch(
+  args: Array<string>, 
+  mode: boolean, // if true, brief, if false, verbose
+  setMode: Dispatch<SetStateAction<boolean>>,
+  loadedFile: string,
+  setLoadedFile: Dispatch<SetStateAction<string>>): string[][] {
+    const column = args[0]
+    const value = args[1]
+    const combined = args[0] + " " + args[1]
+  }
+
 

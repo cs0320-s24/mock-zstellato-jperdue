@@ -37,4 +37,22 @@ export const filepath_data_map: {[index: string]: string[][]} = {
 }
 
 // create query map for mock queries
+export const query_map: {[key: string]: {[index: string]: string[][]}} = {
+    header: {
+        "0 jim": [["jim", "grant", "59"]], 
+        "first_name henry": [["henry", "ford", "28"]], 
+        "0 greg": [[]], 
+        "5 greg": [["Error: Column Index out of Bounds"]],
+        "gender male": [["Error: Column Name not in CSV"]]
+    },
+
+    noHeader: {
+        "0 jim": [["jim", "grant", "59"]], 
+        "first_name henry": [["Error: No Column Names Provided"]], 
+        "0 greg": [[]], 
+        "5 greg": [["Error: Column Index out of Bounds"]],
+        "gender male": [["Error: Column Name not in CSV"]]
+    }
+}
+
 
