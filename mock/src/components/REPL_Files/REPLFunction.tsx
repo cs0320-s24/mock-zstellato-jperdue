@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import '../../styles/main.css';
-import { filepath_data_map } from '../../data/mockedData';
+import { filepath_data_map, query_map } from '../../data/mockedData';
 
 
 /**
@@ -35,6 +35,11 @@ export const commands: { [key: string]: REPLFunction} = {
       setMode: Dispatch<SetStateAction<boolean>>, 
       loadedFile: string, 
       setLoadedFile: Dispatch<SetStateAction<string>>) => handleView(args, mode, setMode, loadedFile, setLoadedFile),
+    search: (args: string[], 
+      mode: boolean, 
+      setMode: Dispatch<SetStateAction<boolean>>, 
+      loadedFile: string, 
+      setLoadedFile: Dispatch<SetStateAction<string>>) => handleSearch(args, mode, setMode, loadedFile, setLoadedFile)
 }
 
 // Method to be called when someone maps to the mode command.
@@ -96,7 +101,14 @@ function handleSearch(
   setLoadedFile: Dispatch<SetStateAction<string>>): string[][] {
     const column = args[0]
     const value = args[1]
-    const combined = args[0] + " " + args[1]
+    const combined = column + " " + value
+
+    if (loadedFile != "No CSV"){
+      const table = query_map[loadedFile][combined]
+      return table
+    } else {
+      return [["Error: No CSV Loaded"]]
+    }
   }
 
 
