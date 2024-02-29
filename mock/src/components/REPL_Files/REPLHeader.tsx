@@ -22,20 +22,20 @@ export function REPLHeader(props: REPLHeader){
         var modeString = "Verbose"
     }
     return (
-        <div className="Header">
-            <table className="Table">
-                <tr>
-                    <td>
-                        <p className="REPL-header">
-                            <b>Mode</b> {modeString}
-                        </p>
-                        <p className="REPL-header">
-                            {props.loadStatement}
-                        </p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    )
+      <div className="Header">
+        <table className="Table">
+          <tbody>
+            <tr>
+              <td>
+                <p className="REPL-header">
+                  <b>Mode</b> {modeString}
+                </p>
+                <p className="REPL-header">{props.loadStatement}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
 }
 
