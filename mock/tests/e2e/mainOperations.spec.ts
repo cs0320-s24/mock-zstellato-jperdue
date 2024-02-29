@@ -27,7 +27,7 @@ test("Login-Logout Reset", async ({ page }) => {
   await page.getByLabel("Login").click();
   await page.getByPlaceholder("Enter command here!").click();
   await page.getByPlaceholder("Enter command here!").fill("mode");
-  await page.getByRole('button', { name: "Submit" }).click();
+  await page.getByRole('button', { name: 'Submit' }).click();
   // await page.getByPlaceholder("Enter command here!").click();
   // await page.getByPlaceholder("Enter command here!").fill("load_csv csv/empty");
   // page.getByRole("button", { name: "Submitted 1 times" }).click();
