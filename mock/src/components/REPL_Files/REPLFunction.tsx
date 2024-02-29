@@ -93,6 +93,7 @@ function handleView(
     }
   }
 
+// Method to be called when mapped to search command
 function handleSearch(
   args: Array<string>, 
   mode: boolean, // if true, brief, if false, verbose
