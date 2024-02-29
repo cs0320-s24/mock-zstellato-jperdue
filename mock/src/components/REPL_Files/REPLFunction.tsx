@@ -104,8 +104,12 @@ function handleSearch(
     const combined = column + " " + value
 
     if (loadedFile != "No CSV"){
-      const table = query_map[loadedFile][combined]
-      return table
+      if(combined in query_map[loadedFile]){
+        const table = query_map[loadedFile][combined]
+        return table
+      } else {
+        return [["Error: Invalid Query, reuqest not in Mocked Data"]]
+      }
     } else {
       return [["Error: No CSV Loaded"]]
     }
