@@ -9,7 +9,8 @@
     min-height:95vh;    
 }
 
-.repl-history {      
+.repl-history {  
+    text-align: left;    
     height:55vh;   
     margin: auto;
     display: block;

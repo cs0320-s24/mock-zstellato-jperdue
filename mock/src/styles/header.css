@@ -7,6 +7,7 @@
 }
 
 .Table {
+    margin: auto;
     table-layout: fixed;
     width: auto;
     background-color: #282c34;

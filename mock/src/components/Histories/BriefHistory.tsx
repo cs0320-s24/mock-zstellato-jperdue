@@ -8,7 +8,12 @@ export interface BriefHistory {
 
 export function BriefHistory(props: BriefHistory) {
 
-    return <ViewTable result={props.history[1]}/>
+    return (
+        <div>
+            <ViewTable result={props.history[1]} />
+            <hr></hr>
+        </div>
+    )
 
 }
 
