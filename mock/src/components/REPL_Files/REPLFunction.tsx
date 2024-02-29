@@ -56,8 +56,17 @@ function handleLoad(
   setMode: Dispatch<SetStateAction<boolean>>,
   loadedFile: string,
   setLoadedFile: Dispatch<SetStateAction<string>>): string[][] {
-    setLoadedFile(args[0])
-    return [["Loaded File: " + args[0]]]
+    const filepath = args[0]
+    console.log(filepath)
+    console.log(args[1])
+    if (filepath == "csv/malformed"){
+      return [["Error: Input Malformed CSV"]]
+    } else if (filepath in filepath_data_map){
+      setLoadedFile(args[1])
+      return [["Loaded File: " + args[0]]]
+    } else {
+      return [["Error: Invalid Filepath"]]
+    }
   }
 
 
