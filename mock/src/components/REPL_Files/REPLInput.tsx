@@ -48,17 +48,22 @@ export function REPLInput(props : REPLInputProps) {
      * of the REPL and how they connect to each other...
      */
     return (
-        <div className="repl-input">
-            {/* This is a comment within the JSX. Notice that it's a TypeScript comment wrapped in
+      <div className="repl-input">
+        {/* This is a comment within the JSX. Notice that it's a TypeScript comment wrapped in
             braces, so that React knows it should be interpreted as TypeScript */}
-            {/* I opted to use this HTML tag; you don't need to. It structures multiple input fields
+        {/* I opted to use this HTML tag; you don't need to. It structures multiple input fields
             into a single unit, which makes it easier for screenreaders to navigate. */}
-            <fieldset>
-              <legend>Enter a command:</legend>
-              <ControlledInput value={commandString} setValue={setCommandString} ariaLabel={"Command input"}/>
-            </fieldset>
-            {/* TODO: Currently this button just counts up, can we make it push the contents of the input box to the history?*/}
-            <button onClick={() => handleSubmit(commandString)}>Submitted {count} times</button>
-        </div>
+        <fieldset>
+          <legend>Enter a command:</legend>
+          <ControlledInput
+            value={commandString}
+            setValue={setCommandString}
+            ariaLabel={"Command input"}
+          />
+        </fieldset>
+        {/* TODO: Currently this button just counts up, can we make it push the contents of the input box to the history?
+               ALSO: it used to say: Submitted {count} times but it was having errors during testing so I simplified to submit*/}
+        <button onClick={() => handleSubmit(commandString)}>Submit</button>
+      </div>
     );
   }
