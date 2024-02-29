@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import '../../styles/main.css';
 import { ControlledInput } from '../ControlledInput';
+import { commands } from './REPLFunction';
 
 interface REPLInputProps{
   // TODO: Fill this with desired props... Maybe something to keep track of the submitted commands
@@ -28,17 +29,28 @@ export function REPLInput(props : REPLInputProps) {
       // CHANGED
       // props.setHistory([...props.history, commandString])
       // setCommandString('')
+      const commandArgs: string[] = commandString.split(' ')
+      const command: string = commandArgs[0]
+      const args = commandArgs.slice(1)
+      const useFunction = commands[command]
 
-      if (commandString == "mode"){
-        if (props.mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
-          props.setMode(false)
-          var returnLine = "Mode set to Verbose"
-        } else {
-          props.setMode(true)
-          var returnLine = "Mode set to Brief"
-        }
-        props.setHistory([[commandString, [[returnLine]]], ...props.history])
-      }
+      const output = useFunction(args, props.mode, props.setMode)
+
+      props.setHistory([[commandString, output], ...props.history])
+
+  
+
+
+      // if (commandString == "mode"){
+      //   if (props.mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
+      //     props.setMode(false)
+      //     var returnLine = "Mode set to Verbose"
+      //   } else {
+      //     props.setMode(true)
+      //     var returnLine = "Mode set to Brief"
+      //   }
+      //   props.setHistory([[commandString, [[returnLine]]], ...props.history])
+      // }
 
 
 

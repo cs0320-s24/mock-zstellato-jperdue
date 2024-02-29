@@ -11,20 +11,20 @@ import { filepath_data_map } from '../../data/mockedData';
  * *NOT* contain the command-name prefix.
  */
 export interface REPLFunction {    
-    (args: Array<string>, mode: boolean, setMode: Dispatch<SetStateAction<boolean>>): String|String[][]
+    (args: Array<string>, mode: boolean, setMode: Dispatch<SetStateAction<boolean>>): string[][]
 }
 
 export const commands: { [key: string]: REPLFunction} = {
     mode: (args: string[], mode: boolean, setMode: Dispatch<SetStateAction<boolean>>) => handleMode(args, mode, setMode)
 }
 
-function handleMode(args: Array<string>, mode: boolean, setMode: Dispatch<SetStateAction<boolean>>): String|String[][] {
+function handleMode(args: Array<string>, mode: boolean, setMode: Dispatch<SetStateAction<boolean>>): string[][] {
     if (mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
         setMode(false)
-        return "Mode set to Verbose"
+        return [["Mode set to Verbose"]]
       } else {
         setMode(true)
-        return "Mode set to Brief"
+        return [["Mode set to Brief"]]
       }
 }
 
