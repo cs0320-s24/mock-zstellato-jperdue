@@ -35,3 +35,6 @@ export const filepath_data_map: {[index: string]: string[][]} = {
     "csv/noHeader": csvNoHeader,
     "csv/malformed": csvMalformed
 }
+
+// create query map for mock queries
+

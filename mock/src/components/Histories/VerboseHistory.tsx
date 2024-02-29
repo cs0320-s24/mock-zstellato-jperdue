@@ -6,6 +6,7 @@ export interface VerboseHistory {
     history: [string, string[][]]
 }
 
+// Return Verbose History display -> both output and command labeled
 export function VerboseHistory(props: VerboseHistory) {
 
     return (

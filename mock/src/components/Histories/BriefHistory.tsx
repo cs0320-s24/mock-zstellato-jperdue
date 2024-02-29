@@ -6,6 +6,7 @@ export interface BriefHistory {
     history: [string, string[][]]
 }
 
+// Return what to display when using brief history -> only the output
 export function BriefHistory(props: BriefHistory) {
 
     return (

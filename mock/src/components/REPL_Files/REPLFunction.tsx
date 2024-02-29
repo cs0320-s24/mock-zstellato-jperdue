@@ -18,6 +18,7 @@ export interface REPLFunction {
     setLoadedFile: Dispatch<SetStateAction<string>>): string[][]
 }
 
+// Command map to be exported to the rest of the file. Any strings here map to a command used in the REPL
 export const commands: { [key: string]: REPLFunction} = {
     mode: (args: string[], 
       mode: boolean, 
@@ -36,10 +37,7 @@ export const commands: { [key: string]: REPLFunction} = {
       setLoadedFile: Dispatch<SetStateAction<string>>) => handleView(args, mode, setMode, loadedFile, setLoadedFile),
 }
 
-export function hasCommand(input: string) {
-  return input in commands
-}
-
+// Method to be called when someone maps to the mode command.
 function handleMode(
   args: Array<string>, 
   mode: boolean, // if true, brief, if false, verbose
@@ -55,6 +53,7 @@ function handleMode(
       }
 }
 
+// Method to be called when someone maps to load command
 function handleLoad(
   args: Array<string>, 
   mode: boolean, // if true, brief, if false, verbose
@@ -74,6 +73,7 @@ function handleLoad(
     }
   }
 
+// Method to be called when someone maps to the View command
 function handleView(
   args: Array<string>, 
   mode: boolean, // if true, brief, if false, verbose
