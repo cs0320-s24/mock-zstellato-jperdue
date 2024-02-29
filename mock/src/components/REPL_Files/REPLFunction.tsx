@@ -28,7 +28,12 @@ export const commands: { [key: string]: REPLFunction} = {
       mode: boolean, 
       setMode: Dispatch<SetStateAction<boolean>>, 
       loadedFile: string, 
-      setLoadedFile: Dispatch<SetStateAction<string>>) => handleLoad(args, mode, setMode, loadedFile, setLoadedFile)
+      setLoadedFile: Dispatch<SetStateAction<string>>) => handleLoad(args, mode, setMode, loadedFile, setLoadedFile),
+    view: (args: string[], 
+      mode: boolean, 
+      setMode: Dispatch<SetStateAction<boolean>>, 
+      loadedFile: string, 
+      setLoadedFile: Dispatch<SetStateAction<string>>) => handleView(args, mode, setMode, loadedFile, setLoadedFile),
 }
 
 export function hasCommand(input: string) {
@@ -62,10 +67,24 @@ function handleLoad(
     if (filepath == "csv/malformed"){
       return [["Error: Input Malformed CSV"]]
     } else if (filepath in filepath_data_map){
-      setLoadedFile(args[1])
+      setLoadedFile(args[0])
       return [["Loaded File: " + args[0]]]
     } else {
       return [["Error: Invalid Filepath"]]
+    }
+  }
+
+function handleView(
+  args: Array<string>, 
+  mode: boolean, // if true, brief, if false, verbose
+  setMode: Dispatch<SetStateAction<boolean>>,
+  loadedFile: string,
+  setLoadedFile: Dispatch<SetStateAction<string>>): string[][] {
+    if (loadedFile != "No CSV"){
+      const table = filepath_data_map[loadedFile]
+      return table
+    } else {
+      return [["Error: No CSV Loaded"]]
     }
   }
 

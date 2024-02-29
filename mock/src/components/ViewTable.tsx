@@ -1,23 +1,26 @@
 import "../styles/main.css";
 
-export interface ViewTable {
-    result: string[][];
+export interface ViewTableProps {
+    result: string[][]
 }
 
-export function ViewTable(props: ViewTable){
+export function ViewTable(props: ViewTableProps){
+
 
 
     return (
         <div>
-            <table className="out-table">
+            <table className="Output-Table">
                 <tbody>
                     {props.result.map((row) => (
                         <tr>
-                            {row.map((datum) => <td className="out-datum">{datum}</td>)}
+                            {row.map((datum) => (
+                            <td className="Output-Datum">{datum}</td>
+                            ))}
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    )
+    );
 }
