@@ -34,8 +34,11 @@ export function REPLInput(props : REPLInputProps) {
       const args = commandArgs.slice(1)
       const useFunction = commands[command]
 
-      const output = useFunction(args, props.mode, props.setMode)
+      if (!(command in commands)){
+        props.setHistory([[commandString, [["Provided Command is Unknown"]]], ...props.history])
+      }
 
+      const output = useFunction(args, props.mode, props.setMode)
       props.setHistory([[commandString, output], ...props.history])
 
   

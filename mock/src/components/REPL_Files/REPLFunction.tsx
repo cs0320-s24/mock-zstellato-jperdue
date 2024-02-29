@@ -18,6 +18,10 @@ export const commands: { [key: string]: REPLFunction} = {
     mode: (args: string[], mode: boolean, setMode: Dispatch<SetStateAction<boolean>>) => handleMode(args, mode, setMode)
 }
 
+export function hasCommand(input: string) {
+  return input in commands
+}
+
 function handleMode(args: Array<string>, mode: boolean, setMode: Dispatch<SetStateAction<boolean>>): string[][] {
     if (mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
         setMode(false)
