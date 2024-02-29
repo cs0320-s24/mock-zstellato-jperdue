@@ -1,4 +1,4 @@
-import "../styles/main.css";
+import '../../styles/main.css';
 import { ViewTable } from "../ViewTable";
 
 // Interface for BriefHistory, take in a single string, 2d array tuple
