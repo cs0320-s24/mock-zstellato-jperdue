@@ -10,6 +10,8 @@ interface REPLInputProps{
   setHistory: Dispatch<SetStateAction<[string, string [][]][]>>,
   mode: boolean, // if true, brief, if false, verbose
   setMode: Dispatch<SetStateAction<boolean>>,
+  loadedFile: string,
+  setLoadedFile: Dispatch<SetStateAction<string>>,
 }
 // You can use a custom interface or explicit fields or both! An alternative to the current function header might be:
 // REPLInput(history: string[], setHistory: Dispatch<SetStateAction<string[]>>)
@@ -32,33 +34,14 @@ export function REPLInput(props : REPLInputProps) {
       const commandArgs: string[] = commandString.split(' ')
       const command: string = commandArgs[0]
       const args = commandArgs.slice(1)
-      const useFunction = commands[command]
 
-      if (!(command in commands)){
+      if (!(command in commands)){ // check if command in commands map
         props.setHistory([[commandString, [["Provided Command is Unknown"]]], ...props.history])
       }
 
-      const output = useFunction(args, props.mode, props.setMode)
+      const useFunction = commands[command]
+      const output = useFunction(args, props.mode, props.setMode, props.loadedFile, props.setLoadedFile)
       props.setHistory([[commandString, output], ...props.history])
-
-  
-
-
-      // if (commandString == "mode"){
-      //   if (props.mode){ // if mode is true, the mode is brief, this means we will switch to verbose mode
-      //     props.setMode(false)
-      //     var returnLine = "Mode set to Verbose"
-      //   } else {
-      //     props.setMode(true)
-      //     var returnLine = "Mode set to Brief"
-      //   }
-      //   props.setHistory([[commandString, [[returnLine]]], ...props.history])
-      // }
-
-
-
-
-
     }
     /**
      * We suggest breaking down this component into smaller components, think about the individual pieces 

@@ -18,6 +18,8 @@ export default function REPL() {
   // CHANGED
   const [history, setHistory] = useState<[string, string [][]][]>([]) // generically have an empty history
   const [mode, setMode] = useState<boolean>(true) // generically set mode to true, meaning it is brief mode
+  const [loadedFile, setLoadedFile] = useState<string>("No CSV")
+
 
   return (
     <div className="repl">  
@@ -32,10 +34,13 @@ export default function REPL() {
         history={history} 
         setHistory={setHistory} 
         mode={mode} 
-        setMode={setMode}/>
+        setMode={setMode}
+        loadedFile={loadedFile}
+        setLoadedFile={setLoadedFile}
+        />
       <REPLHeader
         mode={mode}
-        loadStatement='No CSV Loaded' // will replace with a variablle from const
+        loadStatement={loadedFile + " is loaded"} // will replace with a variablle from const
         />
     </div>
   );

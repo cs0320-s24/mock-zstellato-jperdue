@@ -20,6 +20,12 @@ const csvNoHeader = [
     ["henry", "ford", "28"]
 ]
 
+const malformedCSV = "csv/malformed"
+const csvMalformed = [
+    ["jarvsfrm", "'''", "5fqrw  32q"],
+    ["hen36 fq&y", "ford"]
+]
+
 
 
 // Create map to export
