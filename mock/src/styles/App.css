@@ -13,18 +13,21 @@
   color: white;
 }
 
-
-
 /* Header Styling */
 .Header {
-    text-align: left;
-    margin: 1vh;
-    background-color: #0055ff;
+  overflow: scroll;
+  margin: 1vh;
+  background-color: #0055ff;
 }
 
 .Table {
-    margin: auto;
-    table-layout: fixed;
-    width: auto;
-    background-color: #0055ff;
+  text-align: left;
+
+  background-color: #0aff0e;
 }
+/*
+margin: center;
+table-layout: left;
+width: auto;
+
+*/

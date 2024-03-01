@@ -38,13 +38,16 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  z-index: 10;
 }
 button:hover {
   border-color: #646cff;
+  z-index: 11;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+    z-index: 12;
 }
 
 @media (prefers-color-scheme: light) {
