@@ -14,8 +14,7 @@ import { REPLHeader } from './REPLHeader';
 */
 
 export default function REPL() {
-  // TODO: Add some kind of shared state that holds all the commands submitted.
-  // CHANGED
+
   const [history, setHistory] = useState<[string, string [][]][]>([]) // generically have an empty history
   const [mode, setMode] = useState<boolean>(true) // generically set mode to true, meaning it is brief mode
   const [loadedFile, setLoadedFile] = useState<string>("No CSV")

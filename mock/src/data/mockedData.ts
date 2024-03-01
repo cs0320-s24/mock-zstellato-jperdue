@@ -37,22 +37,22 @@ export const filepath_data_map: {[index: string]: string[][]} = {
 }
 
 // create query map for mock queries
-export const query_map: {[key: string]: {[index: string]: string[][]}} = {
-    "csv/header": {
-        "0 jim": [["jim", "grant", "59"]], 
-        "first_name henry": [["henry", "ford", "28"]], 
-        "0 greg": [[]], 
-        "5 greg": [["Error: Column Index out of Bounds"]],
-        "gender male": [["Error: Column Name not in CSV"]]
-    },
+export const query_map: { [key: string]: { [index: string]: string[][] } } = {
+  "csv/header": {
+    "0 jim": [["Result:"], ["jim", "grant", "59"]],
+    "first_name henry": [["Result:"], ["henry", "ford", "28"]],
+    "0 greg": [["Result:"], []],
+    "5 greg": [["Error: Column Index '5' is out of Bounds"]],
+    "gender male": [["Error: Column Name 'gender male' is not in CSV"]],
+  },
 
-    "csv/noHeader": {
-        "0 jim": [["jim", "grant", "59"]], 
-        "first_name henry": [["Error: No Column Names Provided"]], 
-        "0 greg": [[]], 
-        "5 greg": [["Error: Column Index out of Bounds"]],
-        "gender male": [["Error: Column Name not in CSV"]]
-    }
-}
+  "csv/noHeader": {
+    "0 jim": [["Result:"], ["jim", "grant", "59"]],
+    "first_name henry": [["Error: No Column Names Provided"]],
+    "0 greg": [["Result:"], []],
+    "5 greg": [["Error: Column Index '5' is out of Bounds"]],
+    "gender male": [["Error: Column Name 'gender male' is not in CSV"]],
+  },
+};
 
 

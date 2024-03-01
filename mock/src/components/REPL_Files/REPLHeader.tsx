@@ -13,7 +13,7 @@ interface REPLHeader{
 /**
  * Export function to show Mode and whether a CSV is loaded in header
  * @param props 
- * @returns 
+ * @returns a table with important and helpful info to the user including the mode and whether or not a csv is loaded
  */
 export function REPLHeader(props: REPLHeader){
     if (props.mode){

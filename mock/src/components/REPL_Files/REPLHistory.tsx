@@ -3,7 +3,6 @@ import { BriefHistory } from '../Histories/BriefHistory';
 import { VerboseHistory } from '../Histories/VerboseHistory';
 
 interface REPLHistoryProps{
-    // TODO: Fill with some shared state tracking all the pushed commands
     // CHANGED
     history: [string, string [][]][]
     mode: boolean
@@ -14,7 +13,7 @@ interface REPLHistoryProps{
  * REPL history function, returns all items that have been searched to be viewed by the user,
  * responses can be viewed in verbose or brief mode
  * @param props 
- * @returns 
+ * @returns  the output of the history, a short version if mode is brief (true) and long version if mode is verbose (false)
  */
 export function REPLHistory(props : REPLHistoryProps) {
     
@@ -23,7 +22,6 @@ export function REPLHistory(props : REPLHistoryProps) {
 
             <div className="repl-history" aria-label='repl-history'>
                 {/* This is where command history will go */}
-                {/* TODO: To go through all the pushed commands... try the .map() function! */}
                 {/* CHANGED */}
                 {props.history.map((command, output) => <BriefHistory history={[command[0], command[1]]}/>)}
             </div>
@@ -33,7 +31,6 @@ export function REPLHistory(props : REPLHistoryProps) {
 
             <div className="repl-history" aria-label='repl-history'>
                 {/* This is where command history will go */}
-                {/* TODO: To go through all the pushed commands... try the .map() function! */}
                 {/* CHANGED */}
                 {props.history.map((command, output) => <VerboseHistory history={[command[0], command[1]]}/>)}
             </div>

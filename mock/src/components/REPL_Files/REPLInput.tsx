@@ -19,7 +19,6 @@ export function REPLInput(props : REPLInputProps) {
     // Remember: let React manage state in your webapp. 
     // Manages the contents of the input box
     const [commandString, setCommandString] = useState<string>('');
-    // TODO WITH TA : add a count state
     const [count, setCount] = useState<number>(0)
 
     // Variable output to change given the command
@@ -61,8 +60,7 @@ export function REPLInput(props : REPLInputProps) {
             ariaLabel={"Command input"}
           />
         </fieldset>
-        {/* TODO: Currently this button just counts up, can we make it push the contents of the input box to the history?
-               ALSO: it used to say: Submitted {count} times but it was having errors during testing so I simplified to submit*/}
+        {/* it used to say: Submitted {count} times but it was having errors during testing so I simplified to submit*/}
         <button onClick={() => handleSubmit(commandString)}>Submit</button>
       </div>
     );

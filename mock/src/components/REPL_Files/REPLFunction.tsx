@@ -86,8 +86,12 @@ function handleView(
   loadedFile: string,
   setLoadedFile: Dispatch<SetStateAction<string>>): string[][] {
     if (loadedFile != "No CSV"){
-      const table = filepath_data_map[loadedFile]
-      return table
+      if ((loadedFile = "csv/empty")) {
+        return [["Error: CSV 'csv/empty' is empty."]];
+      } else {
+        const table = filepath_data_map[loadedFile];
+        return table;
+      }
     } else {
       return [["Error: No CSV Loaded"]]
     }
@@ -105,11 +109,13 @@ function handleSearch(
     const combined = column + " " + value
 
     if (loadedFile != "No CSV"){
-      if(combined in query_map[loadedFile]){
+      if (loadedFile = "csv/empty") {
+        return [["Error: CSV 'csv/empty' is empty."]];
+      } else if(combined in query_map[loadedFile]){
         const table = query_map[loadedFile][combined]
         return table
       } else {
-        return [["Error: Invalid Query, reuqest not in Mocked Data"]]
+        return [["Error: Invalid Query, request '" + combined + "' not found in Mocked Data"]]
       }
     } else {
       return [["Error: No CSV Loaded"]]

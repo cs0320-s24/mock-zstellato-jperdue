@@ -141,7 +141,85 @@ test("view and search before correct load", async ({ page }) => {
 });
 
 
-/* Checks if you try to load */
+/* Checks if you try to load a malformed file, it counts as if nothing was loaded. */
+test("malformed doesnt load", async ({ page }) => {
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page
+    .getByPlaceholder("Enter command here!")
+    .fill("load_csv csv/malformed");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByRole("cell", { name: "Error: Input Malformed CSV" })
+  ).toBeVisible();
+  await expect(page.getByText("No CSV is loaded")).toBeVisible();
+  
+  /* view throws error */
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("view");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByRole("cell", { name: "Error: No CSV Loaded" })
+  ).toBeVisible();
+ 
+  /* search throws error */
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("search 0 1");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByRole("cell", { name: "Error: No CSV Loaded" }).first()
+  ).toBeVisible();
+});
+
+
+
+
+/* test load view and search an empty csv */
+test("load, view, search empty csv", async ({ page }) => {
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("load_csv csv/empty");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("view");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("search 0 1");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByLabel("Sign Out").click();
+});
+
+
+
+test("switching modes after commands are given", async ({ page }) => {
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page
+    .getByPlaceholder("Enter command here!")
+    .fill("load_csv csv/noheader");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByRole("cell", { name: "Error: Invalid Filepath" })
+  ).toBeVisible();
+  await expect(page.getByPlaceholder("Enter command here!")).toHaveValue(
+    "load_csv csv/noheader"
+  );
+  await expect(page.getByText("Mode Brief")).toBeVisible();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("mode");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Mode Verbose")).toBeVisible();
+});
+
+
+
+
+
+
+
 
 
 // test("has title", async ({ page }) => {

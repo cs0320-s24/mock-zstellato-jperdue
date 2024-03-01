@@ -29,3 +29,5 @@ As a developer attempting to add new commands, one can add them by creating a ne
 
 # Collaboration
 Conceptual conversations with Natalie King
+Chris Butilus helped me learn how to use the playwright testing tools, which sped things up a bunch
+We started with the CS 0320 gearup code when we built our program.
