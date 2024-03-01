@@ -5,29 +5,32 @@
 */
 
 .repl {
-    position:relative;
-    min-height:95vh;    
+  position: relative;
+  min-height: 95vh;
 }
 
-.repl-history {  
-    text-align: left;    
-    height:55vh;   
-    margin: auto;
-    display: block;
-    overflow: scroll;    
+.repl-history {
+  text-align: left;
+  height: 55vh;
+  margin: auto;
+  display: block;
+  overflow: scroll;
 }
 
-.repl-input {        
-    margin: auto;    
-    height:10vh;
-    z-index: 8;
+.repl-input {
+  margin: auto;
+  height: 10vh;
+  z-index: 8;
 }
 .repl-command-box {
-    width: 90%;            
-    margin: auto;
-    display: block;
+  width: 90%;
+  margin: auto;
+  display: block;
 }
-button{
-    margin: auto;
-    display: block;
+button {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  display: block;
 }
