@@ -26,18 +26,15 @@ test("Login-Logout Reset", async ({ page }) => {
   await page.goto("http://localhost:8000/");
   await page.getByLabel("Login").click();
   await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("load_csv csv/empty");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByPlaceholder("Enter command here!").click();
   await page.getByPlaceholder("Enter command here!").fill("mode");
-  await page.getByRole('button', { name: 'Submit' }).click();
-  // await page.getByPlaceholder("Enter command here!").click();
-  // await page.getByPlaceholder("Enter command here!").fill("load_csv csv/empty");
-  // page.getByRole("button", { name: "Submitted 1 times" }).click();
-  // await page.getByLabel("Sign Out").click();
-  // await page.getByLabel("Login").click();
-  // await page.getByPlaceholder("Enter command here!").click();
-  // await page.getByText("Mode Brief").click();
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByLabel("Sign Out").click();
+  await page.getByLabel("Login").click();
 
+  await expect(page.getByText("Mode Brief")).toBeVisible();
+  await expect(page.getByText("No CSV is loaded")).toBeVisible();
 });
 
-
-// This test checks whether login and logout resets everything back to their original states
-// It also calls on load and mode commands

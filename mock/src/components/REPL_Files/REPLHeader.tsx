@@ -22,7 +22,6 @@ export function REPLHeader(props: REPLHeader){
         var modeString = "Verbose"
     }
     return (
-      <div className="Header">
         <table className="Table">
           <tbody>
             <tr>
@@ -35,7 +34,6 @@ export function REPLHeader(props: REPLHeader){
             </tr>
           </tbody>
         </table>
-      </div>
     );
 }
 

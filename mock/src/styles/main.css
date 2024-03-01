@@ -20,6 +20,7 @@
 .repl-input {        
     margin: auto;    
     height:10vh;
+    z-index: 8;
 }
 .repl-command-box {
     width: 90%;            

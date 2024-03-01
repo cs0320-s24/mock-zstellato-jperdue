@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-header {
@@ -13,17 +14,9 @@
   color: white;
 }
 
-/* Header Styling */
-.Header {
-  overflow: scroll;
-  margin: 1vh;
-  background-color: #0055ff;
-}
-
 .Table {
+  margin: left;
   text-align: left;
-
-  background-color: #0aff0e;
 }
 /*
 margin: center;
