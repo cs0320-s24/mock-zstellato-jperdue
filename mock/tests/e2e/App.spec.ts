@@ -35,7 +35,8 @@ test('on page load, i dont see the input box until login', async ({ page }) => {
   // click the login button
   await page.getByLabel('Login').click();
   await expect(page.getByLabel('Sign Out')).toBeVisible()
-  await expect(page.getByLabel("Enter command here!")).toBeVisible();
+  await expect(page.getByPlaceholder("Enter command here!")).toBeEmpty();
+  await expect(page.getByPlaceholder("Enter command here!")).toBeVisible();
 })
 
 test('after I type into the input box, its text changes', async ({ page }) => {

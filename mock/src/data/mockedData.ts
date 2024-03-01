@@ -41,17 +41,19 @@ export const query_map: { [key: string]: { [index: string]: string[][] } } = {
   "csv/header": {
     "0 jim": [["Result:"], ["jim", "grant", "59"]],
     "first_name henry": [["Result:"], ["henry", "ford", "28"]],
+    "- henry": [["Result:"], ["henry", "ford", "28"]],
     "0 greg": [["Result:"], []],
     "5 greg": [["Error: Column Index '5' is out of Bounds"]],
-    "gender male": [["Error: Column Name 'gender male' is not in CSV"]],
+    "gender male": [["Error: Column Name 'gender' is not in CSV"]],
   },
 
   "csv/noHeader": {
     "0 jim": [["Result:"], ["jim", "grant", "59"]],
-    "first_name henry": [["Error: No Column Names Provided"]],
+    "first_name henry": [["Error: Cannot search by column name because CSV 'csv/noHeader' has no headers."]],
+    "- henry": [["Result:"], ["henry", "ford", "28"]],
     "0 greg": [["Result:"], []],
     "5 greg": [["Error: Column Index '5' is out of Bounds"]],
-    "gender male": [["Error: Column Name 'gender male' is not in CSV"]],
+    "gender male": [["Error: Column Name 'gender' is not in CSV"]],
   },
 };
 

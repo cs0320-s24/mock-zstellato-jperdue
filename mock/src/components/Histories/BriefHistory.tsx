@@ -8,7 +8,6 @@ export interface BriefHistory {
 
 // Return what to display when using brief history -> only the output
 export function BriefHistory(props: BriefHistory) {
-
     return (
         <div>
             <ViewTable result={props.history[1]} />
