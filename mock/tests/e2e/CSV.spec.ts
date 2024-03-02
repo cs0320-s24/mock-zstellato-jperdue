@@ -475,6 +475,77 @@ test("check that csv/malformed doesnt load and cant be view or searched", async 
   ).toBeVisible();
 });
 
+test("checks that load and view works for a single column dataset", async ({ page }) => {
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page
+    .getByPlaceholder("Enter command here!")
+    .fill("load_csv csv/oneColumn");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("view");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("cell", { name: "first_name" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "jim" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "henry" })).toBeVisible();
+});
+
+
+test("tries all search functionality for a single column dataset", async ({ page }) => {
+  await page.goto("http://localhost:8000/");
+  await page.getByLabel("Login").click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page
+    .getByPlaceholder("Enter command here!")
+    .fill("load_csv csv/oneColumn");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("search 0 jim");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("cell", { name: "Result:" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "jim" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "jim" })).toBeVisible();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page
+    .getByPlaceholder("Enter command here!")
+    .fill('search "first_name henry');
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page.getByPlaceholder("Enter command here!").press("ArrowLeft");
+  await page
+    .getByPlaceholder("Enter command here!")
+    .fill("search first_name henry");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("cell", { name: "henry" })).toBeVisible();
+  await expect(
+    page.locator("table").filter({ hasText: "Result:henry" })
+  ).toBeVisible();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("search - henry");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByRole("cell", { name: "henry" }).first()).toBeVisible();
+  await page.getByPlaceholder("Enter command here!").click();
+  await page.getByPlaceholder("Enter command here!").fill("search 0 greg");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.locator("table").filter({ hasText: /^Result:$/ })
+  ).toBeVisible();
+});
+
 
 
 // test("has title", async ({ page }) => {

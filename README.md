@@ -19,8 +19,11 @@ We made our mocked data maps from filepaths to data and queries to result to all
 
 
 # Errors/Bugs
-
+The input for column is before the input for search term so the user has to input a "-" to search by no column in particular. In the future we should change this to be search term and then search index so i can just be left blank
 # Tests
+Run the tests after starting up the server using 'npm start'. Run the tests using 'npx playwright test -' or 'npx playwright test --ui' if you want to see individual parts.
+We tested all the positive use cases (where the code is used correctly) in addition to as many negative use cases we could think of. We also used interesting shape testing to try out how longer strings of input (load one csv, search, load another, search, view, logout, login, search) would affect the code in order to see if anything was out of line.
+
 
 # How to
 After logging in, the mode will be set to brief, and no CSV will be loaded. One could use the load_csv command, using this structure "load_csv filepath" with a desired filepath. If the filepath is within the mocked data, and not a malformed csv (csv/malformed in the mocked data) it will set that path as the loadedPath and display this information on the bottom left. Now, one can use the view command to see the data within the loaded table, and search to search the table so long as the query is within the mocked query map. To search, use the query format "search <column> <value>" where column and value are inputs and column can be either an index or a column name. Note one can only search or view the loaded table, no others in the mocked data until they are loaded. Only one data set can be loaded at a time. TO switch modes, use the mode command. Brief history will only portrary the outputs of commands, while verbose will display both commands and outputs.
