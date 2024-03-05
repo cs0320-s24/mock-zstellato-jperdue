@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  position: relative;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+  
+}
+
+.Table {
+  margin: left;
+  text-align: left;
+}
+/*
+margin: center;
+table-layout: left;
+width: auto;
+
+*/
